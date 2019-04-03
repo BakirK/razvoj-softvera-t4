@@ -42,6 +42,8 @@ public class Artikal {
         this.cijena = cijenaIN;
     }
     public Artikal (String inParameters) {
+        String[] artikal =  inParameters.split(",");
+        this.sifra=artikal[0];
         int i = 0;
         for (String parameter: inParameters.split(",")) {
             if (i == 0) {

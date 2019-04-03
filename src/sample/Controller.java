@@ -17,33 +17,40 @@ public class Controller {
 
         for (String line: items.split("\n")) {
             int i = 0;
-            Artikal proizvod = new Artikal();
+            Artikal proizvod = new Artikal(line);
+            lista.add(proizvod);
             //System.out.print(line);
+
+            /*
             for (String word: items.split(",")) {
-                System.out.print(word);
                 switch (i) {
                     case 0: {
+                        System.out.print(word);
                         proizvod.setSifra(word);
                         i++;
                         break;
                     }
                     case 1: {
+                        System.out.print(word);
                         proizvod.setNaziv(word);
                         i++;
                         break;
                     }
                     case 2: {
+                        System.out.print(word);
+                        word.trim();
                         proizvod.setCijena(Double.parseDouble(word));
                         lista.add(proizvod);
-                        i++;
+                        i = 0;
                         break;
                     }
                 }
-            }
+            }*/
         }
+/*
         for (Artikal a: lista) {
             a.izbaciDuplikate(lista);
-        }
+        }*/
         for (Artikal a: lista) {
             String s = a.getSifra() + "," + a.getNaziv() + "," + a.getCijena() + "\n";
             outputArea.setText(s);
