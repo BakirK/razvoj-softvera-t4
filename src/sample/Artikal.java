@@ -62,14 +62,27 @@ public class Artikal {
         parametri += cijena;
         return parametri;
     }
+
+    public boolean equals(Object o) {
+        Artikal artikal = (Artikal) o;
+        if (this.cijena == artikal.cijena && this.naziv == artikal.naziv && this
+        .sifra == artikal.sifra) {
+            return true;
+        }
+        return false;
+    }
+
     public static void izbaciDuplikate (ArrayList lista) {
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < lista.size() - 1; i++) {
             for (int j = i + 1; j < lista.size(); j++) {
-                if (lista.get(i) == lista.get(j)) {
+                if (lista.get(j).equals(lista.get(j))) {
                     lista.remove(j);
                     i--;
                 }
             }
         }
     }
+
+
+
 }
