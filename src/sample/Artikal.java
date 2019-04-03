@@ -49,10 +49,16 @@ public class Artikal {
                 i = 0;
                 this.cijena = Integer.parseInt(parameter);
             }
-
-
-
         }
+    }
+    public String toString() {
+        String parametri = null;
+        parametri += this.sifra;
+        parametri += ",";
+        parametri += this.naziv;
+        parametri += ",";
+        parametri += cijena;
+        return parametri;
     }
 
 }
