@@ -18,7 +18,9 @@ public class Controller {
         for (String line: items.split("\n")) {
             int i = 0;
             Artikal proizvod = new Artikal();
+            //System.out.print(line);
             for (String word: items.split(",")) {
+                System.out.print(word);
                 switch (i) {
                     case 0: {
                         proizvod.setSifra(word);
@@ -41,6 +43,10 @@ public class Controller {
         }
         for (Artikal a: lista) {
             a.izbaciDuplikate(lista);
+        }
+        for (Artikal a: lista) {
+            String s = a.getSifra() + "," + a.getNaziv() + "," + a.getCijena() + "\n";
+            outputArea.setText(s);
         }
 
         //System.out.print(items);
