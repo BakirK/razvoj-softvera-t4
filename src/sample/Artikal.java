@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Artikal {
         private String sifra, naziv;
@@ -82,6 +83,19 @@ public class Artikal {
             }
         }
     }
+
+    public static void izbaciDuplikateHashSet (ArrayList lista) {
+        HashSet set = new HashSet<String>();
+        for (int i = 0; i < lista.size(); i++) {
+            set.add(lista.get(i));
+        }
+        lista.clear();
+        for (Object s: set) {
+            lista.add(s);
+        }
+    }
+
+
 
 
 
