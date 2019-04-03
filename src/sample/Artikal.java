@@ -78,7 +78,6 @@ public class Artikal {
             for (int j = i + 1; j < lista.size(); j++) {
                 if (lista.get(j).equals(lista.get(j))) {
                     lista.remove(j);
-                    i--;
                 }
             }
         }
