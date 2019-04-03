@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.ArrayList;
+
 public class Artikal {
         private String sifra, naziv;
         private double cijena;
@@ -60,5 +62,14 @@ public class Artikal {
         parametri += cijena;
         return parametri;
     }
-
+    public static void izbaciDuplikate (ArrayList lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            for (int j = i + 1; j < lista.size(); j++) {
+                if (lista.get(i) == lista.get(j)) {
+                    lista.remove(j);
+                    i--;
+                }
+            }
+        }
+    }
 }
