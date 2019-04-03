@@ -7,6 +7,10 @@ public class Artikal {
         private String sifra, naziv;
         private double cijena;
 
+    public Artikal() {
+
+    }
+
     public double getCijena() {
         return cijena;
     }

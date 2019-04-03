@@ -18,8 +18,8 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="buttonDodaj" layoutX="349.0" layoutY="214.0" mnemonicParsing="false" onAction="#dodajArtikle" text="Dodaj artikle" />
-                        <TextArea layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
-                        <TextArea editable="false" layoutX="14.0" layoutY="245.0" prefHeight="200.0" prefWidth="200.0" />
+                        <TextArea fx:id="inputArea" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+                        <TextArea fx:id="outputArea" editable="false" layoutX="14.0" layoutY="245.0" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </AnchorPane>
             </content>
