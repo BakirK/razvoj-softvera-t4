@@ -1,32 +1,63 @@
 package sample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Racun {
-    private Artikal getItem() {
-        return item;
+    private Artikal artikal;
+    private int kolicina;
+
+    private Artikal getArtikal() {
+        return artikal;
     }
 
-    private void setItem(Artikal item) {
-        this.item = item;
+    private void setArtikal(Artikal artikal) {
+        this.artikal = artikal;
     }
 
-    private int getQuantity() {
-        return quantity;
+    private int getKolicina() {
+        return kolicina;
     }
 
-    private void setQuantity(int quantity) {
-        this.quantity = quantity;
+    private void setKolicina(int kolicina) {
+        if (kolicina <= 0) {
+            throw new IllegalArgumentException("Kolicina je premala");
+        }
+        this.kolicina = kolicina;
     }
 
-    private Artikal item;
-    private int quantity;
+    private List getStavke() {
+        return stavke;
+    }
+
+    private List stavke = new ArrayList ();
+
 
     //konstruktor
-    public Racun (Artikal item, int quantity) {
+    public Racun (Artikal artikal, int kolicina) {
+        if (kolicina <= 0) {
+            throw new IllegalArgumentException("Kolicina je premala");
+        }
+        this.artikal = artikal;
+        this.kolicina = kolicina;
+    }
+
+    public void dodajStavku (Artikal item, int quantity) {
         if (quantity <= 0) {
             throw new IllegalArgumentException("Kolicina je prazna");
         }
-        this.item = item;
-        this.quantity = quantity;
+        Racun temp = new Racun(item, quantity);
+        this.stavke.add(temp);
+    }
+
+    public double ukupanIznos () {
+        double sum = 0;
+
+        for (Object racun: stavke) {
+            Racun stavka = (Racun) racun;
+            sum += stavka.artikal.getCijena() * stavka.getKolicina();
+        }
+        return (sum / stavke.size());
     }
 
 }
