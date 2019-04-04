@@ -16,6 +16,9 @@ public class Artikal {
     }
 
     public void setCijena(double cijena) {
+        if (cijena <= 0 ) {
+            throw new IllegalArgumentException("Cijena je manja od 0!");
+        }
         this.cijena = cijena;
     }
 
@@ -24,6 +27,9 @@ public class Artikal {
     }
 
     public void setSifra(String sifra) {
+        if (sifra.isEmpty()) {
+            throw new IllegalArgumentException("Šifra je prazna");
+        }
         this.sifra = sifra;
     }
 
@@ -32,29 +38,36 @@ public class Artikal {
     }
 
     public void setNaziv(String naziv) {
+        if (naziv.isEmpty()) {
+            throw new IllegalArgumentException("Naiv je prazan");
+        }
         this.naziv = naziv;
     }
 
 
-    public Artikal(String sifraIn, String nazivIn, double cijenaIN) {
-        this.sifra = sifraIn;
-        this.naziv = nazivIn;
-        this.cijena = cijenaIN;
-    }
     public Artikal (String inParameters) {
         //String[] artikal =  inParameters.split(",");
         //this.sifra=artikal[0];
         int i = 0;
         for (String parameter: inParameters.split(",")) {
             if (i == 0) {
+                if (parameter.isEmpty()) {
+                    throw new IllegalArgumentException("Šifra je prazna");
+                }
                 this.sifra = parameter;
                 i++;
             }
             else if (i == 1) {
+                if (parameter.isEmpty()) {
+                    throw new IllegalArgumentException("Naiv je prazan");
+                }
                 this.naziv = parameter;
                 i++;
             }
             else {
+                if (Double.parseDouble(parameter.trim()) <= 0 ) {
+                    throw new IllegalArgumentException("Cijena je manja od 0!");
+                }
                 i = 0;
                 this.cijena = Double.parseDouble(parameter.trim());
             }
@@ -75,11 +88,9 @@ public class Artikal {
     public boolean equals(Object o) {
         Artikal artikal = (Artikal) o;
         //System.out.println(this.cijena + artikal.cijena+ this.naziv + artikal.naziv + this.sifra + artikal.sifra);
-        if (this.naziv.equals(artikal.naziv) && this.sifra.equals(artikal.sifra) && (this.cijena == artikal.cijena)) {
-            System.out.println("lalal");
+        if (this.naziv.equals(artikal.naziv) && this.sifra.equals(artikal.sifra) &&
+                (this.cijena == artikal.cijena)) {
             return true;
-        } else {
-            System.out.println("this:" + this.naziv + " " + artikal.naziv);
         }
         return false;
     }
@@ -95,6 +106,7 @@ public class Artikal {
         }
     }
 
+    //neradi sa objektima?
     public static void izbaciDuplikateHashSet (ArrayList lista) {
 
         HashSet set = new HashSet();
