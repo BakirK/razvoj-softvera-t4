@@ -68,6 +68,7 @@ public class Controller {
                 artikalTemp = a;
             }
         }
+        //ovdje treba napravit da uzima spinner value
         //int kolicina = (int) quantity.getValue();
         stavke.dodajStavku(artikalTemp, 5);
         String output = "";
