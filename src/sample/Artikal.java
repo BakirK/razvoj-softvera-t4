@@ -42,8 +42,8 @@ public class Artikal {
         this.cijena = cijenaIN;
     }
     public Artikal (String inParameters) {
-        String[] artikal =  inParameters.split(",");
-        this.sifra=artikal[0];
+        //String[] artikal =  inParameters.split(",");
+        //this.sifra=artikal[0];
         int i = 0;
         for (String parameter: inParameters.split(",")) {
             if (i == 0) {
@@ -56,10 +56,11 @@ public class Artikal {
             }
             else {
                 i = 0;
-                this.cijena = Integer.parseInt(parameter);
+                this.cijena = Double.parseDouble(parameter.trim());
             }
         }
     }
+    @Override
     public String toString() {
         String parametri = null;
         parametri += this.sifra;
@@ -70,11 +71,15 @@ public class Artikal {
         return parametri;
     }
 
+    @Override
     public boolean equals(Object o) {
         Artikal artikal = (Artikal) o;
-        if (this.cijena == artikal.cijena && this.naziv == artikal.naziv && this
-        .sifra == artikal.sifra) {
+        //System.out.println(this.cijena + artikal.cijena+ this.naziv + artikal.naziv + this.sifra + artikal.sifra);
+        if (this.naziv.equals(artikal.naziv) && this.sifra.equals(artikal.sifra) && (this.cijena == artikal.cijena)) {
+            System.out.println("lalal");
             return true;
+        } else {
+            System.out.println("this:" + this.naziv + " " + artikal.naziv);
         }
         return false;
     }
@@ -82,15 +87,21 @@ public class Artikal {
     public static void izbaciDuplikate (ArrayList lista) {
         for (int i = 0; i < lista.size() - 1; i++) {
             for (int j = i + 1; j < lista.size(); j++) {
-                if (lista.get(j).equals(lista.get(j))) {
+                if (lista.get(i).equals(lista.get(j))) {
                     lista.remove(j);
+                    j--;
                 }
             }
         }
     }
 
     public static void izbaciDuplikateHashSet (ArrayList lista) {
-        HashSet set = new HashSet<String>();
+
+        HashSet set = new HashSet();
+        set.addAll(lista);
+        lista = new ArrayList();
+        lista.addAll(set);
+
         for (int i = 0; i < lista.size(); i++) {
             set.add(lista.get(i));
         }
