@@ -49,7 +49,7 @@ public class Controller {
 
         Artikal.izbaciDuplikate(lista);
         String outputString = "";
-        choice.getItems().removeAll();
+        choice.getItems().clear();
         for (Artikal a: lista) {
             outputString += a.getSifra() + "," + a.getNaziv() + "," + a.getCijena() + "\n";
             //paralelno dovanja sifri u choice box
