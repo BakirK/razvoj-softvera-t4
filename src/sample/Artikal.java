@@ -39,7 +39,7 @@ public class Artikal {
 
     public void setNaziv(String naziv) {
         if (naziv.isEmpty()) {
-            throw new IllegalArgumentException("Naiv je prazan");
+            throw new IllegalArgumentException("Naziv je prazan");
         }
         this.naziv = naziv;
     }
@@ -59,7 +59,7 @@ public class Artikal {
             }
             else if (i == 1) {
                 if (parameter.isEmpty()) {
-                    throw new IllegalArgumentException("Naiv je prazan");
+                    throw new IllegalArgumentException("Naziv je prazan");
                 }
                 this.naziv = parameter;
                 i++;
