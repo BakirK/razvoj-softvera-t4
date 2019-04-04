@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     @Override
@@ -15,8 +16,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1000, 1000));
         primaryStage.show();
     }
-
-
+/*
+    public void initialize() {
+        quantity.getValueFactory().setValue(0);
+    }*/
     public static void main(String[] args) {
         launch(args);
     }

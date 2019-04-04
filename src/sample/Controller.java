@@ -1,6 +1,10 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.TextArea;
 
 import java.awt.*;
 import java.io.Console;
@@ -10,9 +14,25 @@ import java.util.Collections;
 public class Controller {
     public javafx.scene.control.TextArea inputArea;
     public javafx.scene.control.TextArea outputArea;
+    @FXML
+    private ChoiceBox choice;
+    @FXML
+    private Spinner quantity;
+    @FXML
+    private TextArea aktuelniRacuni;
+
+
+
+
+    ArrayList<Artikal> lista = new ArrayList<Artikal>();
+    Racun stavke = new Racun();
+
+
+
+
 
     public void dodajArtikle(ActionEvent actionEvent) {
-        ArrayList<Artikal> lista = new ArrayList<Artikal>();
+        //ArrayList<Artikal> lista = new ArrayList<Artikal>();
         String items = null;
         items = inputArea.getText();
 
@@ -29,9 +49,34 @@ public class Controller {
 
         Artikal.izbaciDuplikate(lista);
         String outputString = "";
+        choice.getItems().removeAll();
         for (Artikal a: lista) {
             outputString += a.getSifra() + "," + a.getNaziv() + "," + a.getCijena() + "\n";
+            //paralelno dovanja sifri u choice box
+            choice.getItems().add(a.getSifra());
         }
         outputArea.setText(outputString);
+
+    }
+
+    @FXML
+    private void dodajStavke(ActionEvent actionEvent) {
+        String izabraniArtikl = (String) choice.getValue();
+        Artikal artikalTemp = new Artikal();
+        for (Artikal a: lista) {
+            if (a.getSifra().equals(izabraniArtikl)) {
+                artikalTemp = a;
+            }
+        }
+        //int kolicina = (int) quantity.getValue();
+        stavke.dodajStavku(artikalTemp, 5);
+        String output = "";
+        for (Object r: stavke.getStavke()) {
+            Racun stavka = (Racun) r;
+            output += stavka.getArtikal().getSifra() + "\t" + stavka.getKolicina() + "\t" +
+                    stavka.getArtikal().getCijena() + "\n";
+        }
+        aktuelniRacuni.setText(output);
+
     }
 }

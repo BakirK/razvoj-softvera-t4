@@ -7,7 +7,11 @@ public class Racun {
     private Artikal artikal;
     private int kolicina;
 
-    private Artikal getArtikal() {
+    public Racun() {
+
+    }
+
+    public Artikal getArtikal() {
         return artikal;
     }
 
@@ -15,7 +19,7 @@ public class Racun {
         this.artikal = artikal;
     }
 
-    private int getKolicina() {
+    public int getKolicina() {
         return kolicina;
     }
 
@@ -26,11 +30,13 @@ public class Racun {
         this.kolicina = kolicina;
     }
 
-    private List getStavke() {
+
+
+    private List<Racun> stavke = new ArrayList<Racun> ();
+
+    public List getStavke() {
         return stavke;
     }
-
-    private List stavke = new ArrayList ();
 
 
     //konstruktor
