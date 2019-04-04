@@ -44,7 +44,7 @@ public class Racun {
 
     public void dodajStavku (Artikal item, int quantity) {
         if (quantity <= 0) {
-            throw new IllegalArgumentException("Kolicina je prazna");
+            throw new IllegalArgumentException("Kolicina je premala");
         }
         Racun temp = new Racun(item, quantity);
         this.stavke.add(temp);
