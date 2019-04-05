@@ -63,7 +63,7 @@ public class Racun {
             Racun stavka = (Racun) racun;
             sum += stavka.artikal.getCijena() * stavka.getKolicina();
         }
-        return (sum / stavke.size());
+        return sum;
     }
 
 }
