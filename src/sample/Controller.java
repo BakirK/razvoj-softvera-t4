@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 
 import java.awt.*;
@@ -29,7 +30,25 @@ public class Controller {
 
 
 
+    public void initialize() {
+        //definisem inkrement i dekrement spinnera koa i njegovu min i max vrijednost
+        SpinnerValueFactory<Integer> quantityValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+        this.quantity.setValueFactory(quantityValueFactory);
 
+
+        //SpinnerValueFactory quantity = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100,0);
+        /*SpinnerValueFactory<Integer> quantity = new SpinnerValueFactory<Integer>() {
+            @Override
+            public void decrement(int i) {
+                quantity.decrement(1);
+            }
+
+            @Override
+            public void increment(int i) {
+                quantity.increment(1);
+            }
+        };*/
+    }
 
     public void dodajArtikle(ActionEvent actionEvent) {
         //ArrayList<Artikal> lista = new ArrayList<Artikal>();
@@ -71,11 +90,11 @@ public class Controller {
         //ovdje treba napravit da uzima spinner value
         int kolicina = (int) quantity.getValue();
         System.out.println(kolicina);
-        stavke.dodajStavku(artikalTemp, 1);
+        stavke.dodajStavku(artikalTemp, kolicina);
         String output = "";
         for (Object r: stavke.getStavke()) {
             Racun stavka = (Racun) r;
-            output += stavka.getArtikal().getSifra() + "\t" + stavka.getKolicina() + "\t" +
+            output += stavka.getArtikal().getSifra() + "\t\t" + stavka.getKolicina() + "\t\t" +
                     stavka.getArtikal().getCijena() + "\n";
         }
         System.out.println(stavke.ukupanIznos());
