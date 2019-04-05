@@ -87,19 +87,16 @@ public class Controller {
                 artikalTemp = a;
             }
         }
-        //ovdje treba napravit da uzima spinner value
         int kolicina = (int) quantity.getValue();
-        System.out.println(kolicina);
         stavke.dodajStavku(artikalTemp, kolicina);
-        String output = "";
+        String output = "Šifra\t\t\t\tkolicina\t\t\t\tcijena\n";
         for (Object r: stavke.getStavke()) {
             Racun stavka = (Racun) r;
-            output += stavka.getArtikal().getSifra() + "\t\t" + stavka.getKolicina() + "\t\t" +
+            output += stavka.getArtikal().getSifra() + "\t\t\t\t" + stavka.getKolicina() + "\t\t\t\t" +
                     stavka.getArtikal().getCijena() + "\n";
         }
-        System.out.println(stavke.ukupanIznos());
         double total = stavke.ukupanIznos();
-        output += "UKUPNO \t\t" + total;
+        output += "UKUPNO\t\t\t\t\t\t\t\t" + total;
         aktuelniRacuni.setText(output);
 
     }
